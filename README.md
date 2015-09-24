@@ -12,7 +12,9 @@ Comes with pluggable session serialization
 Allows asynchronous session storage for faster response times
 Sessions are only sent to memcached if they're actually modified
 JMX management & monitoring
-Which problem does the memcached-session-manager solve?
+
+##Which problem does the memcached-session-manager solve?
+
 Imagine you have a web application with sticky sessions running on several tomcats and want to have some kind of session failover. You want to have a scalable solution for that – just add more servers to handle an increasing number of sessions. This can be handled by sessions that are stored for backup in memcached nodes: If a tomcat dies all other tomcats will take over the work of the lazy/dead one and fetch the sessions from the appropriate memcached node(s) and serve this session from thereon.
 
 Wait. You're using non-sticky sessions? Since version 1.4.0 also non-sticky sessions are supported, with optional session locking for concurrent requests and without a single-point-of-failure (sessions are stored in a secondary memcached for backup).
@@ -38,7 +40,7 @@ Also memcached node failover is implemented: if a memcached node is not availabl
 ##How does the sessionId look like?
 The memcached session manager knows a list of memcached nodes (e.g. as n1.localhost:11211 n2.localhost:11212 that he references by the specified id (n1/n2). This id is encoded in the sessionId, so the sessionId might be 602F7397FBE4D9932E59A9D0E52FE178-n1.
 
-What has been implemented/fixed with the latest releases?
+##What has been implemented/fixed with the latest releases?
 Here's a complete list of changes.
 
 ##Is there a demo somewhere?
